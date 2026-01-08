@@ -1,3 +1,269 @@
 body {
     background-color: rgb(51, 51, 51);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 50px 1fr;
+    height: 100vh;
+    color: white;
+    margin: 0px;
+}
+
+#profile {
+    grid-area: 1 / 1 / 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(30, 30, 30);
+}
+
+#header {
+    grid-area: 1 / 2 / 1 / 2;
+}
+
+#sidebar {
+    grid-area: 2 / 1 / 2 / 1;
+    background-color: rgb(30, 30, 30);
+    padding: 5px;
+}
+
+#content {
+    grid-area: 2 / 2 / 2 / 2;
+}
+
+#profilePicture {
+    margin: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+}
+
+#addItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#addItem img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100);
+}
+
+.project {
+    display: flex;
+    height: 50px;
+    margin: 5px;
+    background-color: rgb(99, 99, 99);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.activeProject {
+    display: flex;
+    height: 50px;
+    margin: 5px;
+    background-color: rgb(255, 102, 0);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 2px 2px 5px black;
+}
+
+#tasksCategory {
+    margin: 20px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todoSmall {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.todoLarge {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    min-height: 100px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.upperrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    font-size: 24px;
+}
+
+.expandTodo {
+    height: 30px;
+    width: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+.shown {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.todoDescription {
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.todoNotes {
+    grid-area: 1 / 2 / 3 / 2;
+}
+
+.todoPriorityUrgent {
+    grid-area: 2 / 1 / 2 / 1;
+    color: red;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.todoPriorityMedium {
+    grid-area: 2 / 1 / 2 / 1;
+    color: yellow;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.todoPriorityTakeYourTime {
+    grid-area: 2 / 1 / 2 / 1;
+    color: green;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#addTodo {
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgb(0, 194, 0);
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.7;
+}
+
+#dialog {
+    position: absolute;
+    font-size: 30px;
+    top: 100px;
+    left: 200px;
+    width: 370px;
+    height: 150px;
+    border: 0px;
+    background-color: rgb(226, 226, 226);
+    filter: drop-shadow(2px 2px 4px rgb(54, 54, 54));
+    border-radius: 5px;
+    margin: 20px;
+    color: black;
+    padding: 10px;
+}
+
+#dialog input {
+ width: 350px;
+ margin-top: 10px;
+ font-size: 20px;
+ height: 40px;
+ border-radius: 10px;
+ border: 1px solid black;
+}
+
+#createProject {
+    width: 360px;
+    height: 50px;
+    background-color: rgb(0, 194, 0);
+    border: 0px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#addTodoDialog {
+    gap: 10px;
+    position: absolute;
+    font-size: 30px;
+    top: 100px;
+    left: 200px;
+    width: 700px;
+    height: 370px;
+    border: 0px;
+    background-color: rgb(226, 226, 226);
+    filter: drop-shadow(2px 2px 4px rgb(54, 54, 54));
+    border-radius: 5px;
+    margin: 20px;
+    color: black;
+    padding: 10px;
+}
+
+#dialogContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#addTodoDialog div {
+    display: flex;
+    align-items: top;
+    gap: 10px;
+}
+
+#addTodoDialog div input {
+    width: fit-content;
+}
+
+.radioLabels {
+    font-size: 20px;
+}
+
+#urgencyDiv {
+    align-items: center;
+}
+
+#submitAddTodo {
+    height: 50px;
+    width: 300px;
+    background-color: rgb(0, 194, 0);
+    border-radius: 10px;
+    border: 0px;
+}
+#taskDescription {
+    
 }
