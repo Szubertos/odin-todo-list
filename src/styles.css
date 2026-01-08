@@ -267,3 +267,16 @@ body {
 #taskDescription {
     
 }
+
+.removeTodo {
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    height: 30px;
+    right: 10px;
+    width: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

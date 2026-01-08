@@ -1,6 +1,5 @@
-console.log("Hello World!");
 import "./styles.css";
-
+//class for creating todo tasks
 class Todo {
     constructor (title, description, dueDate, priority, notes) {
         this.title = title;
@@ -12,7 +11,7 @@ class Todo {
         this.id = self.crypto.randomUUID();
     }
 }
-
+//class for creating proejcts that store todo tasks
 class Project {
     constructor (name) {
         this.todos = [];
@@ -32,18 +31,21 @@ class Project {
                 this.todos.splice(i, 1);
             }
         }
+        let jsonstring = JSON.stringify(projects);
+        localStorage.projects = jsonstring;
+        localStorage.numberOfProjects = projects.length;
     }
 }
-
+//array that stores all projects currently created
 let projects = [];
-
+//delete all proejcts from dom, not from array
 function clearProjects() {
     const loadedProjects = document.getElementsByClassName("project");
     for (let i=0; i<loadedProjects.length; i) {
         loadedProjects[i].remove();
     }
 }
-
+//create html for project in the sidebar
 function createProjectDOM(projectName){
     const projectDiv = document.createElement("div");
     projectDiv.classList.add("project");
@@ -58,7 +60,7 @@ function createProjectDOM(projectName){
         activateProject(projectDiv);
     })
 }
-
+//set project as active
 function activateProject(project){
     if (document.getElementsByClassName("project")[0]) {
         let projectObject = 0;
@@ -76,21 +78,21 @@ function activateProject(project){
         loadTodos(projectObject);
     }
 }
-
+//delete all tasks from view, not from storage
 function clearTodoDisplay(){
     let currentTodos = document.getElementsByClassName("todoContainer");
     for (let i=0; i<currentTodos.length; i) {
         currentTodos[0].remove();
     }
 }
-
+//load projects from array into DOM
 function loadProjects() {
     for (let i=0; i<projects.length; i++) {
         let currentProject = projects[i];
         createProjectDOM(currentProject.name);
     }
 }
-
+//load todos from proejcts, into DOM
 function loadTodos(activeProject) {
     if (activeProject.todos[0]) {
 
@@ -136,6 +138,28 @@ function createTodoDOM (title, description, dueDate, priority, notes, id) {
     todoDate.classList.add("todoDate");
     todoDate.textContent = dueDate;
     upperRow.appendChild(todoDate);
+
+    const removeTodo = document.createElement("div");
+    removeTodo.classList.add("removeTodo");
+    removeTodo.textContent = "X";
+    removeTodo.addEventListener("click", function(){
+        if (document.getElementsByClassName("activeProject")[0]) {
+        let activeProjectName = document.getElementsByClassName("activeProject")[0].getElementsByTagName("label")[0].textContent;
+        let activeProject = 0;
+        for (let i=0; i<projects.length; i++) {
+            if (activeProjectName == projects[i].name){
+                activeProject = projects[i];
+            }
+        }
+        for (let i=0; i<activeProject.todos.length; i++) {
+            if (activeProject.todos[i].id == id) {
+                activeProject.removeTodo(activeProject.todos[i]);
+            }
+        }
+        todoDiv.remove();
+    }
+    })
+    upperRow.appendChild(removeTodo);
 
     const expandTodo = document.createElement("img");
     expandTodo.classList.add("expandTodo");
@@ -187,7 +211,7 @@ function createTodoDOM (title, description, dueDate, priority, notes, id) {
     })
 
 }
-
+//create project code
 function addProject() {
     const projectNameInput = document.getElementById("projectNameInput");
     let projectName = projectNameInput.value;
@@ -198,7 +222,7 @@ function addProject() {
     localStorage.projects = jsonstring;
     localStorage.numberOfProjects = projects.length;
 }
-
+//create todo code
 function addTodo(title, description, dueDate, priority, notes) {
     const task = new Todo(title, description, dueDate, priority, notes);
     if (document.getElementsByClassName("activeProject")[0]) {
@@ -209,20 +233,19 @@ function addTodo(title, description, dueDate, priority, notes) {
                 activeProject = projects[i];
             }
         }
-        console.log(activeProject);
         activeProject.addTodo(task);
         loadTodos(activeProject);
     } else {
         alert("You need to have an object active to add todos.")
     }
 }
-
+//event listener for showing dialog allowing us to add project
 const addItemBtn = document.getElementById("addItemIcon");
 const dialog = document.getElementById("dialog");
 addItemBtn.addEventListener("click", function(){
     dialog.show();
 })
-
+//button in the dialog previously shown
 const createProjectBtn = document.getElementById("createProject");
 createProjectBtn.addEventListener("click", function(){
     let activeProjectName = 0;
@@ -246,13 +269,13 @@ createProjectBtn.addEventListener("click", function(){
         activateProject(activeProject);
     }
 })
-
+//event listener for showing dialog to add todo
 const showAddTodoDialog = document.getElementById("addTodo");
 const addTodoDialog = document.getElementById("addTodoDialog");
 showAddTodoDialog.addEventListener("click", function(){
     addTodoDialog.show();
 })
-
+//button for adding todo, in the dialog
 const submitAddTodoBtn = document.getElementById("submitAddTodo");
 submitAddTodoBtn.addEventListener("click", function(){
     let taskNameElement = document.getElementById("taskName");
@@ -287,11 +310,6 @@ submitAddTodoBtn.addEventListener("click", function(){
 function loadProjectsFromStorage() {
     if (localStorage.projects) {
         let savedProjects = JSON.parse(localStorage.projects);
-        console.log(savedProjects);
-        console.log(localStorage.numberOfProjects);
-        console.log(savedProjects[0]);
-        console.log(savedProjects[1]);
-        console.log(savedProjects[2]);
 
         for (let i=0; i<localStorage.numberOfProjects; i++) {
             let project = new Project (savedProjects[i].name);
@@ -299,7 +317,6 @@ function loadProjectsFromStorage() {
             projects.push(project);
         }
     }
-    console.log(projects);
 }
 
 loadProjectsFromStorage();
