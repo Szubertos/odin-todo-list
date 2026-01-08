@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="84bb4fc080631c2605f1.css">
+<script defer src="main.js"></script></head>
+<body>
+    <div id="profile">
+        <img src="b2f4fb711e039297923f.jpg" id="profilePicture">
+        <label id="profileName">Delightful Derek</label>
+    </div>
+    <div id="header"></div>
+    <div id="sidebar">
+        <div id="addItem">
+            <img src="632e3e6e475491f5786a.svg" id="addItemIcon">
+            <label>Add project</label>
+        </div>
+        <div id="projects">
+            <!--<div class="project activeProject">
+                <label class="projectName">Chester</label>
+            </div>
+            <div class="project">
+                <label class="projectName">Water Well</label>
+            </div>
+            <div class="project">
+                <label class="projectName">Suburban Houses</label>
+            </div>-->
+        </div>
+    </div>
+    <div id="content">
+        <dialog closedby="any" id="dialog">
+            <label>Please enter the project name:</label>
+            <input id="projectNameInput">
+            <button id="createProject">Create Project</button>
+        </dialog>
+        <dialog closedby="any" id="addTodoDialog">
+            <div id="dialogContainer">
+                <div>
+                    <label>Task name:</label>
+                    <input id="taskName" required>
+                </div>
+                <div>
+                    <label>Description:</label>
+                    <textarea id="taskDescription" rows="5" cols="50"></textarea>
+                </div>
+                <div>
+                    <label>Due date:</label>
+                    <input id="taskDueDate" type="date" required>
+                </div>
+                <div>
+                    <label>Notes:</label>
+                    <textarea id="taskNotes" rows="5" cols="50"></textarea>
+                </div>
+                <div id="urgencyDiv">
+                    <label>Urgency:</label>
+                    <label class="radioLabels">Urgent</label>
+                    <input id="taskUrgencyUrgent" name="urgency" type="radio" value="urgent">
+                    <label class="radioLabels">Medium</label>
+                    <input id="taskUrgencyMedium" name="urgency" type="radio" value="medium">
+                    <label class="radioLabels">Take your time</label>
+                    <input id="taskUrgencyTakeYourTime" name="urgency" type="radio" value="takeyourtime">
+                </div>
+                <button id="submitAddTodo">ADD</button>
+            </div>
+        </dialog>
+        <div id="tasksCategory">
+            <div>Chester tasks</div>
+            <div id="addTodo">Add new todo</div>
+        </div>
+        <!--<div class="todoSmall" id="taskDiv">
+            <div class="upperrow">
+                <label class="todoTitle">Build a house</label>
+                <label class="todoDate">08.01.2026</label>
+                <img src="./menu-down.svg" class="expandTodo">
+            </div>
+            <div class="hidden" id="lowerrow">
+                <label class="todoDescription">Build a 2 story wooden house across the street.</label>
+                <label class="todoNotes">The floor needs to be oak. I also need to make sure foundation is at least 30cm high.</label>
+                <label class="todoPriorityUrgent">Urgent</label>
+            </div>
+        </div>
+        <div class="todoLarge" id="taskDiv">
+            <div class="upperrow">
+                <label class="todoTitle">Build a house</label>
+                <label class="todoDate">08.01.2026</label>
+                <img src="../menu-down.svg" class="expandTodo">
+            </div>
+            <div class="shown" id="lowerrow">
+                <label class="todoDescription">Build a 2 story wooden house across the street.</label>
+                <label class="todoNotes">The floor needs to be oak. I also need to make sure foundation is at least 30cm high.</label>
+                <label class="todoPriorityUrgent">Urgent</label>
+            </div>
+        </div>-->
+    </div>
+</body>
+</html>
